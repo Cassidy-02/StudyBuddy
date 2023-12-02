@@ -1,0 +1,22 @@
+﻿[*.cs]
+
+# IDE0055: Fix formatting
+dotnet_diagnostic.IDE0055.severity = none
+
+# IDE0047: Remove unnecessary parentheses
+dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary
+
+# IDE0047: Remove unnecessary parentheses
+dotnet_style_parentheses_in_other_binary_operators = never_if_unnecessary
+
+# IDE0047: Remove unnecessary parentheses
+dotnet_diagnostic.IDE0047.severity = silent
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = silent
+
+# IDE0047: Remove unnecessary parentheses
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+
+# CS8602: Dereference of a possibly null reference.
+dotnet_diagnostic.CS8602.severity = silent

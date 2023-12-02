@@ -1,0 +1,115 @@
+﻿@model ClassLibrary1.Table1
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Credits" class="control-label"></label>
+                <input asp-for="Credits" class="form-control" />
+                <span asp-validation-for="Credits" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                <label asp-for="NumOfWeeks" class="control-label"></label>
+                <input asp-for="NumOfWeeks" class="form-control" />
+                <span asp-validation-for="NumOfWeeks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoursWorked" class="control-label"></label>
+                <input asp-for="HoursWorked" class="form-control" />
+                <span asp-validation-for="HoursWorked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelfStudyHours" class="control-label"></label>
+                <input asp-for="SelfStudyHours" class="form-control" />
+                <span asp-validation-for="SelfStudyHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RemainingHours" class="control-label"></label>
+                <input asp-for="RemainingHours" class="form-control" />
+                <span asp-validation-for="RemainingHours" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        fetch('/api/Table1')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const Table1 = data;
+                
+                const chartData = {
+                    labels: modules.map(m => m.date),
+                    datasets: [
+                        {
+                            label: 'Hours Spent',
+                            borderColor: 'rgb(75, 192, 192)',
+                            data: Table1.map(m => m.HoursSpent),
+                            fill: false
+                        },
+                        {
+                            label: 'Ideal Hours',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: Table1.map(m => m.idealHoursPerWeek),
+                            fill: false
+                        }
+                    ]
+                };
+
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'week'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+
+}

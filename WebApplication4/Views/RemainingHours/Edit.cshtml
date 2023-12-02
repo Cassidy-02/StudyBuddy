@@ -1,0 +1,84 @@
+﻿@model ClassLibrary1.Table1
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Credits" class="control-label"></label>
+                <input asp-for="Credits" class="form-control" />
+                <span asp-validation-for="Credits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassHoursPerWeek" class="control-label"></label>
+                <input asp-for="ClassHoursPerWeek" class="form-control" />
+                <span asp-validation-for="ClassHoursPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfWeeks" class="control-label"></label>
+                <input asp-for="NumOfWeeks" class="form-control" />
+                <span asp-validation-for="NumOfWeeks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoursWorked" class="control-label"></label>
+                <input asp-for="HoursWorked" class="form-control" />
+                <span asp-validation-for="HoursWorked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelfStudyHours" class="control-label"></label>
+                <input asp-for="SelfStudyHours" class="form-control" />
+                <span asp-validation-for="SelfStudyHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RemainingHours" class="control-label"></label>
+                <input asp-for="RemainingHours" class="form-control" />
+                <span asp-validation-for="RemainingHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
